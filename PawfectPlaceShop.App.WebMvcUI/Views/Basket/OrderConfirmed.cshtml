@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Sipariş Onaylandı";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+@model PawfectPlaceShop.App.Entity.ViewModels.OrderConfirmedViewModel
+
+<section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text">
+                    <h2>Sipariş Onaylandı</h2>
+                    <div class="breadcrumb__option">
+                        <a href="/">Ana Sayfa</a>
+                        <span>Onaylandı</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="checkout spad">
+    <div class="container">
+        <div class="checkout__form">
+            <h4>Tebrikler, siparişiniz alındı!</h4>
+            <p>Sipariş detaylarınızı aşağıda bulabilirsiniz:</p>
+            <div class="checkout__order">
+                <h4>Sipariş Detayları</h4>
+                <div class="checkout__order__products">Ürünler <span> Toplam</span></div>
+                <ul>
+                    @foreach (var item in Model.BasketItems)
+                    {
+                        <li>@item.ProductName <span>@item.ProductPrice.ToString("C")</span></li>
+                    }
+                </ul>
+                <div class="checkout__order__subtotal">Ara Toplam <span>@Model.Subtotal.ToString("C")</span></div>
+                <div class="checkout__order__total">KDV'li Toplam <span>@Model.Total.ToString("C")</span></div>
+            </div>
+        </div>
+    </div>
+</section>

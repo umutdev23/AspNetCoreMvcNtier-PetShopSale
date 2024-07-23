@@ -1,0 +1,324 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <title>Weblog a Blogging Category Bootstrap responsive WebTemplate | Blog3 :: w3layouts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Weblog a Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link href="~/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="~/css/single.css">
+    <link href="~/style.css" rel='stylesheet' type='text/css' />
+    <link href="~/css/fontawesome-all.css" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"
+          rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PawfectPlaceShop</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="~/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="~/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="~/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="~/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="~/css/style.css" type="text/css">
+</head>
+<body>
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Humberger Begin -->
+    <div class="humberger__menu__overlay"></div>
+    <div class="humberger__menu__wrapper">
+        <div class="humberger__menu__logo">
+            <a asp-action="Index" asp-controller="Home"><img class ="rounded-pill" src="~/images/pawfectplace3.png" height="150px" width="200px" alt="PawfectPlaceLogo"></a>
+        </div>
+        <div class="humberger__menu__cart">
+            <ul>
+                <li>
+                    <a asp-controller="Basket" asp-action="Index">
+                        <i class="fa fa-shopping-bag"></i>
+                        @if (TempData["ToplamAdet"] != null)
+                        {
+                            @TempData["ToplamAdet"]
+                        }
+                    </a>
+                </li>
+            </ul>
+          </div>  
+        <div class="humberger__menu__widget">
+           
+            <div class="header__top__right__auth">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <span>Hoşgeldin @User.Identity.Name</span>
+                        <span>
+                            <a asp-action="Logout" asp-controller="Account">
+                                <i class="fa fa-user"></i> Çıkış
+                            </a>
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="header__top__right__auth">
+                            <a asp-action="Login" asp-controller="Account">
+                                <i class="fa fa-lock"></i> Giriş
+                            </a>
+                        </span>
+                        <span>
+                            <a asp-action="Register" asp-controller="Account">
+                                <i class="fa fa-user"></i> Kayıt
+                            </a>
+                        </span>
+                    }
+            </div>
+        </div>
+        <nav class="humberger__menu__nav mobile-menu">
+            <ul>                  
+                        <li class="active"><a asp-controller="Home" asp-action="Index">Ana Sayfa</a></li>
+                        <li><a asp-controller="Product" asp-action="Index">Alışveriş</a></li>
+
+                        <li><a asp-controller="Article" asp-action="Index">Evcil İlanlar</a></li>
+                        <li><a asp-controller="Contact" asp-action="Index">İletişim</a></li>                  
+            </ul>
+        </nav>
+        <div id="mobile-menu-wrap"></div>
+        <div class="header__top__right__social">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-pinterest-p"></i></a>
+        </div>
+        <div class="humberger__menu__contact">
+            <ul>
+                    <li><i class="fa fa-envelope"></i> pawfectcontact@gmail.com</li>
+                    Pawfect Place Shop
+                    <li><i class="fa fa-heart" aria-hidden="true"></i></li>
+            </ul>
+        </div>
+    </div>
+    <!-- Humberger End -->
+
+    <!-- Header Section Begin -->
+    <header class="header" style="background-color: #F3F6FA; ">
+      
+        <div class="container" >
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="header__logo">
+                        <a asp-controller="Home" asp-action="Index"><img class="rounded-pill" src="~/images/pawfectplace3.png" height="100px" width="150px" alt="pethsoplogo"></a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <nav class="header__menu">
+                        <ul>
+
+                            <li class="active"><a asp-controller="Home" asp-action="Index">Ana Sayfa</a></li>
+                            <li><a asp-controller="Product" asp-action="Index">Alışveriş</a></li>
+
+
+                            <li><a asp-controller="Article" asp-action="Index">Evcil İlanlar</a></li>
+
+                            <li><a asp-controller="Contact" asp-action="Index">İletişim</a></li>
+
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3">
+                    <div class="header__cart">
+                        <ul>
+                            
+                            <li>
+                                <a asp-controller="Basket" asp-action="Index">
+                                    <i class="fa fa-shopping-bag"></i>  
+                                    @if (TempData["ToplamAdet"] != null)
+                                    {
+                                        @TempData["ToplamAdet"]
+                                    }
+                                </a>
+                            </li>
+                        </ul>
+                    
+                        <div class="header__top__right__auth">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <span>Hoşgeldin @User.Identity.Name</span>
+                                <span>
+                                    <a asp-action="Logout" asp-controller="Account">
+                                        <i class="fa fa-user"></i> Çıkış
+                                    </a>
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="header__top__right__auth">
+                                    <a asp-action="Login" asp-controller="Account">
+                                        <i class="fa fa-lock"></i> Giriş
+                                    </a>
+                                </span>
+                                <span>
+                                    <a asp-action="Register" asp-controller="Account">
+                                        <i class="fa fa-user"></i> Kayıt
+                                    </a>
+                                </span>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="humberger__open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer__about">
+                        <div class="footer__about__logo">
+
+                            <a asp-controller="Home" asp-action="Index"><img  src="~/images/pawfectplace3.png" height="250px" width="400px" alt="pethsoplogo"></a>
+
+                        </div>
+                        <ul>
+                            <li>Adres: 60-49 Yol 11378 Beşiktaş/İstanbul</li>
+                            <li>Telefon: +90 535 323 5232</li>
+                            <li>Email: pawfectcontact@gmail.com</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
+                    <div class="footer__widget">
+                        <h6>Faydalı Linkler</h6>
+                        <ul>
+                            <li><a href="#">Hakkımızda</a></li>
+                            <li><a href="#">Mağazamız Hakkında</a></li>
+                            <li><a href="#">Gizlilik Politikası</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#">Kimiz</a></li>
+                            <li><a asp-controller="Product" asp-action="Index">Hizmetlerimiz</a></li>
+                            <li><a href="#">Projeler</a></li>
+                            <li><a asp-controller="Contact" asp-action="Index">İletişim</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="footer__widget">
+                        <h6>Şimdi Bültenimize Katılın</h6>
+                        <p>En son mağazamız ve özel teklifler hakkında E-posta güncellemeleri alın.</p>
+                        <form action="#">
+                            <input type="text" placeholder="E-postanızı girin">
+                            <button type="submit" class="site-btn">Abone Ol</button>
+                        </form>
+                        <div class="footer__widget__social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-pinterest"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer__copyright">
+                        <div class="footer__copyright__text">
+                            <p>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Telif Hakkı &copy;<script>document.write(new Date().getFullYear());</script> Tüm hakları saklıdır | Pawfect Place Shop <i class="fa fa-heart" aria-hidden="true"></i>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </p>
+                        </div>
+                        <div class="footer__copyright__payment"><img src="img/payment-item.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Footer Section End -->
+    <!-- Js Plugins -->
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/jquery.nice-select.min.js"></script>
+    <script src="~/js/jquery-ui.min.js"></script>
+    <script src="~/js/jquery.slicknav.js"></script>
+    <script src="~/js/mixitup.min.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/main.js"></script>
+    <!-- js -->
+    <script src="~/js/jquery-2.2.3.min.js"></script>
+    <!-- //js -->
+    <!--/ start-smoth-scrolling -->
+    <script src="~/js/move-top.js"></script>
+    <script src="~/js/easing.js"></script>
+      <script>
+    jQuery(document).ready(function ($) {
+    $(".scroll").click(function (event) {
+    event.preventDefault();
+    $('html,body').animate({
+    scrollTop: $(this.hash).offset().top
+    }, 900);
+    });
+    });
+    </script>
+    <!--// end-smoth-scrolling -->
+
+    <script>
+    $(document).ready(function () {
+    
+    var defaults = {
+    containerID: 'toTop', // fading element id
+    containerHoverID: 'toTopHover', // fading element hover id
+    scrollSpeed: 1200,
+    easingType: 'linear'
+    };
+   
+
+    $().UItoTop({
+    easingType: 'easeOutQuart'
+    });
+
+    });
+    </script>
+    <a href="#home" class="scroll" id="toTop" style="display: block;">
+    <span id="toTopHover" style="opacity: 1;"> </span>
+    </a>
+
+    <!-- //Custom-JavaScript-File-Links -->
+    <script src="~/js/bootstrap.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+body {
+  
+    background-image: url('../images/adminlayoutbackground2.jpg');
+    background-size: cover; /* Adjust the size to cover the entire background */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent repeating the image */
+}

@@ -1,0 +1,17 @@
+.arkaplan__section {
+    background-image: url('/images/ortaya1.png'); /* Dosya yolunun doðru olduðundan emin olun */
+    /* Arka plan resmini ayarlar */
+    background-size: cover; /* Arka plan resmini kapsayýcýya uyacak þekilde boyutlandýrýr */
+    background-position: center; /* Arka plan resmini ortalar */
+    background-repeat: no-repeat; /* Arka plan resmini tekrarlamaz */
+    height: auto; /* Yüksekliði otomatik ayarlar*/
+    position: relative; /* Ýçerik yerleþimi için pozisyonu relative yapar */
+    max-width: 100%; /* Geniþliði kapsayýcýya uyacak þekilde ayarlar */
+    padding: 20px; /**/ /* Ýçerik etrafýna boþluk ekler */
+    z-index: 1;
+}
+
+/*.container {
+    position: relative;*/ /* Ýçerik için relative pozisyon ayarý */
+    /*;*/ /* Ýçeriði arka planýn üstünde tutar */
+/*}*/

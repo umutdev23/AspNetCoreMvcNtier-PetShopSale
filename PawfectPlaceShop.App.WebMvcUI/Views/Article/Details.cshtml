@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutBlogDetails.cshtml";
+}
+
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutBlogDetails.cshtml";
+}
+
+@model ArticleViewModel
+
+<div class="container " style="margin-top: 25px;">
+    <div class="row">
+        <div class="col-lg-10 col-md-7 order-md-1 order-1">
+            <div class="blog__details__text">
+                <img src="@Model.PictureUrl" alt="@Model.Title" width="500px" height="500px" >
+                <h2>@Model.Title</h2>
+                <p>@Model.Content</p>
+
+            </div>
+            <div class="blog__details__content">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="blog__details__author">
+
+                            <div class="blog__details__author__text">
+                                <h6>Kullanıcı No: @Model.UserId</h6>
+                                <span>Pawfect Üyesi</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="blog__details__widget">
+                            <ul>
+
+
+
+                                <li><span>Konum: </span>@Model.Location</li>
+                                <li><span>İletişim için arayınız: </span> <i class="fa fa-phone"> 0535282957</i></li>
+                            </ul>
+                            <div class="blog__details__social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-google-plus"></i></a>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                                <a href="#"><i class="fa fa-envelope"></i></a>
+                            </div>
+                            <div>
+                                <button class="btn btn-success text-white">
+                                    <a asp-action="Index" asp-controller="Article">
+                                        İlanlara dön
+                                    </a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="related-blog spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title related-blog-title">
+                    <h2>İLGİNİ ÇEKEBİLECEK İLANLAR</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var last in ViewBag.GetLastArticles as List<ArticleViewModel>)
+            {
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="blog__item">
+                        <div class="blog__item__pic">
+                            <img src="@last.PictureUrl" alt="" width="320px" height="320px">
+                        </div>
+                        <div class="blog__item__text">
+                            <ul>
+                                <li><i class="fa fa-calendar-o"></i> @last.CreatedDate</li>
+                            </ul>
+                            <h5><a asp-controller="Article" asp-action="Details" asp-route-DetailsId="@last.Id">@last.Title</a></h5>
+                            <p>@last.Content </p>
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+    </div>
+</section>
+
+
+>
+

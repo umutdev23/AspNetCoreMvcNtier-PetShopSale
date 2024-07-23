@@ -1,0 +1,195 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Areas\Admin\Data\**" />
+    <Compile Remove="Areas\Admin\Models\**" />
+    <Content Remove="Areas\Admin\Data\**" />
+    <Content Remove="Areas\Admin\Models\**" />
+    <EmbeddedResource Remove="Areas\Admin\Data\**" />
+    <EmbeddedResource Remove="Areas\Admin\Models\**" />
+    <None Remove="Areas\Admin\Data\**" />
+    <None Remove="Areas\Admin\Models\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+
+    <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter" Version="8.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.7" />
+
+    <Content Remove="wwwroot\sass\_search.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
+
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.6">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PawfectPlaceShop.App.Service\PawfectPlaceShop.App.Service.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\img\img\loading-bubbles.svg" />
+    <None Include="wwwroot\js\core\bootstrap.min.js" />
+    <None Include="wwwroot\js\core\jquery.3.2.1.min.js" />
+    <None Include="wwwroot\js\core\popper.min.js" />
+    <None Include="wwwroot\js\js\bootstrap-notify.js" />
+    <None Include="wwwroot\js\js\bootstrap-select.js" />
+    <None Include="wwwroot\js\js\bootstrap.js" />
+    <None Include="wwwroot\js\js\bootstrap.min.js" />
+    <None Include="wwwroot\js\js\chartist.min.js" />
+    <None Include="wwwroot\js\js\core\bootstrap.min.js" />
+    <None Include="wwwroot\js\js\core\jquery.3.2.1.min.js" />
+    <None Include="wwwroot\js\js\core\popper.min.js" />
+    <None Include="wwwroot\js\js\dashboard.js" />
+    <None Include="wwwroot\js\js\demo.js" />
+    <None Include="wwwroot\js\js\jquery-1.10.2.js" />
+    <None Include="wwwroot\js\js\jquery-3.3.1.min.js" />
+    <None Include="wwwroot\js\js\jquery-ui.min.js" />
+    <None Include="wwwroot\js\js\jquery.3.2.1.min.js" />
+    <None Include="wwwroot\js\js\jquery.nice-select.min.js" />
+    <None Include="wwwroot\js\js\jquery.slicknav.js" />
+    <None Include="wwwroot\js\js\light-bootstrap-dashboard.js" />
+    <None Include="wwwroot\js\js\login-register.js" />
+    <None Include="wwwroot\js\js\main.js" />
+    <None Include="wwwroot\js\js\mixitup.min.js" />
+    <None Include="wwwroot\js\js\owl.carousel.min.js" />
+    <None Include="wwwroot\js\js\plugins\bootstrap-datepicker.js" />
+    <None Include="wwwroot\js\js\plugins\bootstrap-notify.js" />
+    <None Include="wwwroot\js\js\plugins\bootstrap-switch.js" />
+    <None Include="wwwroot\js\js\plugins\chartist.min.js" />
+    <None Include="wwwroot\js\js\plugins\nouislider.min.js" />
+    <None Include="wwwroot\js\js\sidebar1hexcolorscript.js" />
+    <None Include="wwwroot\js\js\site.js" />
+    <None Include="wwwroot\js\plugins\bootstrap-datepicker.js" />
+    <None Include="wwwroot\js\plugins\bootstrap-notify.js" />
+    <None Include="wwwroot\js\plugins\bootstrap-switch.js" />
+    <None Include="wwwroot\js\plugins\chartist.min.js" />
+    <None Include="wwwroot\js\plugins\nouislider.min.js" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\css\bootstrap-grid.css %282%29.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\css\bootstrap-grid.min.css %282%29.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\css\bootstrap-grid.rtl.css %282%29.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css %282%29.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\css\bootstrap-reboot.css %282%29.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\css\bootstrap-reboot.min.css %282%29.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css %282%29.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css %282%29.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\css\bootstrap-theme.css.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\css\bootstrap-theme.min.css.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\css\bootstrap-utilities.css %282%29.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\css\bootstrap-utilities.css.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\css\bootstrap-utilities.min.css %282%29.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css %282%29.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css %282%29.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\css\bootstrap.css %282%29.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\css\bootstrap.min.css %282%29.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\css\bootstrap.rtl.css %282%29.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\css\bootstrap.rtl.css.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\css\bootstrap.rtl.min.css %282%29.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\js\bootstrap %282%29.js" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\js\bootstrap.bundle %282%29.js" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\js\bootstrap.bundle.js" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\js\bootstrap.bundle.js %282%29.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\js\bootstrap.bundle.js.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\js\bootstrap.bundle.min %282%29.js" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\js\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\js\bootstrap.bundle.min.js %282%29.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\js\bootstrap.esm %282%29.js" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\js\bootstrap.esm.js" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\js\bootstrap.esm.js %282%29.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\js\bootstrap.esm.js.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\js\bootstrap.esm.min %282%29.js" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\js\bootstrap.esm.min.js" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\js\bootstrap.esm.min.js %282%29.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\js\bootstrap.esm.min.js.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\js\bootstrap.js" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\js\bootstrap.js %282%29.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\js\bootstrap.js.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\js\bootstrap.min %282%29.js" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\js\bootstrap.min.js %282%29.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\dist\js\bootstrap.min.js.map" />
+    <None Include="wwwroot\lib\lib\bootstrap\LICENSE" />
+    <None Include="wwwroot\lib\lib\bootstrap\LICENSE %282%29" />
+    <None Include="wwwroot\lib\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive %282%29.js" />
+    <None Include="wwwroot\lib\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <None Include="wwwroot\lib\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min %282%29.js" />
+    <None Include="wwwroot\lib\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <None Include="wwwroot\lib\lib\jquery-validation\dist\additional-methods %282%29.js" />
+    <None Include="wwwroot\lib\lib\jquery-validation\dist\additional-methods.js" />
+    <None Include="wwwroot\lib\lib\jquery-validation\dist\additional-methods.min %282%29.js" />
+    <None Include="wwwroot\lib\lib\jquery-validation\dist\additional-methods.min.js" />
+    <None Include="wwwroot\lib\lib\jquery-validation\dist\jquery.validate %282%29.js" />
+    <None Include="wwwroot\lib\lib\jquery-validation\dist\jquery.validate.js" />
+    <None Include="wwwroot\lib\lib\jquery-validation\dist\jquery.validate.min %282%29.js" />
+    <None Include="wwwroot\lib\lib\jquery-validation\dist\jquery.validate.min.js" />
+    <None Include="wwwroot\lib\lib\jquery-validation\LICENSE %282%29.md" />
+    <None Include="wwwroot\lib\lib\jquery-validation\LICENSE.md" />
+    <None Include="wwwroot\lib\lib\jquery\dist\jquery %282%29.js" />
+    <None Include="wwwroot\lib\lib\jquery\dist\jquery.js" />
+    <None Include="wwwroot\lib\lib\jquery\dist\jquery.min %282%29.js" />
+    <None Include="wwwroot\lib\lib\jquery\dist\jquery.min %282%29.map" />
+    <None Include="wwwroot\lib\lib\jquery\dist\jquery.min.js" />
+    <None Include="wwwroot\lib\lib\jquery\dist\jquery.min.map" />
+    <None Include="wwwroot\sass\lbd\mixins\_buttons.scss" />
+    <None Include="wwwroot\sass\lbd\mixins\_cards.scss" />
+    <None Include="wwwroot\sass\lbd\mixins\_chartist.scss" />
+    <None Include="wwwroot\sass\lbd\mixins\_icons.scss" />
+    <None Include="wwwroot\sass\lbd\mixins\_inputs.scss" />
+    <None Include="wwwroot\sass\lbd\mixins\_labels.scss" />
+    <None Include="wwwroot\sass\lbd\mixins\_morphing-buttons.scss" />
+    <None Include="wwwroot\sass\lbd\mixins\_navbars.scss" />
+    <None Include="wwwroot\sass\lbd\mixins\_social-buttons.scss" />
+    <None Include="wwwroot\sass\lbd\mixins\_tabs.scss" />
+    <None Include="wwwroot\sass\lbd\mixins\_transparency.scss" />
+    <None Include="wwwroot\sass\lbd\mixins\_vendor-prefixes.scss" />
+    <None Include="wwwroot\sass\lbd\plugins\_animate.scss" />
+    <None Include="wwwroot\sass\lbd\plugins\_datetime-picker.scss" />
+    <None Include="wwwroot\sass\lbd\_alerts.scss" />
+    <None Include="wwwroot\sass\lbd\_bootstrap-switch.scss" />
+    <None Include="wwwroot\sass\lbd\_buttons.scss" />
+    <None Include="wwwroot\sass\lbd\_cards.scss" />
+    <None Include="wwwroot\sass\lbd\_chartist.scss" />
+    <None Include="wwwroot\sass\lbd\_checkbox-radio-switch.scss" />
+    <None Include="wwwroot\sass\lbd\_dropdown.scss" />
+    <None Include="wwwroot\sass\lbd\_footers.scss" />
+    <None Include="wwwroot\sass\lbd\_inputs.scss" />
+    <None Include="wwwroot\sass\lbd\_misc.scss" />
+    <None Include="wwwroot\sass\lbd\_mixins.scss" />
+    <None Include="wwwroot\sass\lbd\_navbars.scss" />
+    <None Include="wwwroot\sass\lbd\_partial-nucleo-icons.scss" />
+    <None Include="wwwroot\sass\lbd\_responsive.scss" />
+    <None Include="wwwroot\sass\lbd\_sidebar-and-main-panel.scss" />
+    <None Include="wwwroot\sass\lbd\_tables.scss" />
+    <None Include="wwwroot\sass\lbd\_typography.scss" />
+    <None Include="wwwroot\sass\lbd\_variables.scss" />
+    <None Include="wwwroot\sass\_search.scss" />
+  </ItemGroup>
+
+</Project>

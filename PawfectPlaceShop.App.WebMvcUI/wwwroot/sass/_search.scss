@@ -1,0 +1,46 @@
+﻿.form-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    background-color: #F1F8E9; // Light green background
+    border-radius: 0.5em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    form {
+        display: flex;
+        width: 100%;
+        max-width: 600px;
+
+        .form-div-input {
+            flex: 1;
+            padding: 0.75em 1em;
+            border: 1px solid #C8E6C9; // Input border color
+            border-radius: 0.5em 0 0 0.5em;
+            background-color: #FFFFFF; // Input background color
+            color: #212121; // Input text color
+            font-size: 1em;
+            outline: none;
+            transition: border-color 0.3s ease;
+
+            &:focus {
+                border-color: #4CAF50; // Primary green color
+            }
+        }
+
+        .form-div-button {
+            background-color: #4CAF50; // Primary green color
+            color: #FFFFFF; // White text color
+            border: none;
+            padding: 0.75em 1.5em;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 0 0.5em 0.5em 0;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: #388E3C; // Darker green for hover
+            }
+        }
+    }
+}

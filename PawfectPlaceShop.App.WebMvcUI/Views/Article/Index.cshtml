@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutBlog.cshtml";
+}
+
+
+
+@model List<ArticleViewModel>
+
+
+<div class="container " style="margin-top: 25px;" >
+    <div class="row">
+        <div class="col-lg-4 col-md-5">
+            <div class="blog__sidebar">
+                <div class="blog__sidebar__search">
+                    <form asp-controller="Article" asp-action="Index">
+                        <input type="text" name="search" placeholder="İlan ara">
+                        <button type="submit"><span class="icon_search"></span></button>
+                    </form>
+                </div>
+                <div class="blog__sidebar__item">
+                    <h4>Kategoriler</h4>
+                    <a asp-controller="Article" asp-action="Create" class="btn btn-success text-white">Yeni bir ilan ver</a>
+                    <ul>
+                        <li><a asp-controller="Article" asp-action="Index">Tüm Hayvanlar </a></li>
+                        @foreach (var category in ViewBag.ArticleCategories as List<ArticleCategoryViewModel>)
+                        {
+                            <li><a asp-controller="Article" asp-action="Index" asp-route-articleId="@category.Id">@category.Name</a></li>
+                        }
+
+
+                    </ul>
+                </div>
+                <div class="blog__sidebar__item">
+                    <h4>Son İlanlar</h4>
+                    <div class="blog__sidebar__recent">
+                        @foreach (var last in ViewBag.GetLastArticle as List<ArticleViewModel>)
+                        {
+                            <a href="#" class="blog__sidebar__recent__item">
+                                <div class="blog__sidebar__recent__item__pic">
+                                    <img src="@last.PictureUrl" alt="lastPicture" width="120px" height="120px">
+                                </div>
+                                <div class="blog__sidebar__recent__item__text">
+                                    <h6>@last.Title</h6>
+                                    <span>@last.CreatedDate</span>
+                                </div>
+                            </a>
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-7">
+            <div class="row">
+                @foreach (var article in Model)
+                {
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="blog__item">
+                            <div class="blog__item__pic">
+                                <img src="@article.PictureUrl" alt="" width="400px" height="300px>
+                            </div>
+                            <div class="blog__item__text">
+                                <ul>
+                                    <li><i class="fa fa-calendar-o"></i> @article.CreatedDate</li>
+                                </ul>
+                                <h5>@article.Title</h5>
+                                <p>
+                                    @article.Location
+                                </p>
+                                <a asp-controller="Article" asp-action="Details" asp-route-detailsId="@article.Id" class="btn btn-success text-white">İNCELE <span class="arrow_right"></span></a>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

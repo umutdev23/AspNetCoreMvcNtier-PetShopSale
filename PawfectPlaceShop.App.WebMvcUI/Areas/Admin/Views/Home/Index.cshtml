@@ -1,0 +1,22 @@
+﻿@* giriş yapılmadıysa giriş yapılsın yapıldıysa girilen kişi adminse sayfa açılsın yoksa index e yönlendirsin *@
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@if (User.IsInRole("Admin") || User.IsInRole("admin"))
+{
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            window.location.href = '@Url.Action("Index", "Role")';
+        });
+    </script>
+
+}
+else
+{
+    <div class="alert alert-warning" role="alert">
+        Admin paneli için admin hesabınız ile <a asp-action="Login" asp-controller="Account" class="alert-link">giriş</a> yapınız.
+    </div>
+}

@@ -1,0 +1,125 @@
+﻿@using PawfectPlaceShop.App.Entity.ViewModels
+@model ProductViewModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutDetails.cshtml";
+}
+
+<!-- Product Details Section Begin -->
+<section class="product-details spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="product__details__pic">
+                    <div class="product__details__pic__item">
+                        <img class="product__details__pic__item--large"
+                             src="@Model.ImageUrl" alt="Product Image">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="product__details__text">
+                    <h3>@Model?.Name</h3>
+                    <div class="product__details__rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                    </div>
+                    <div class="product__details__price">@string.Format("{0:C2}", Model?.Price)</div>
+                    <p>@Model?.Description</p>
+                    <div class="product__details__quantity">
+                        <div class="quantity">
+                            
+                        </div>
+                    </div>
+
+                    <form asp-action="Add" asp-controller="Basket" method="get">
+                        <input type="hidden" name="Id" value="@Model?.Id" />
+                        <input type="hidden" name="Qnt" value="1" />
+                        <button type="submit" class="btn btn-success btn-lg btn-block">
+                            <i class="fas fa-shopping-cart"></i> Sepete Ekle
+                        </button>
+                    </form>
+
+                        <li style="display: flex; justify-content: flex-start;">
+                            <b>Stok durumu: </b>
+                            @if (Model?.Stock > 0)
+                            {
+                                <span class="text-success">Stokta Mevcut</span>
+                            }
+                            else
+                            {
+                                <span class="text-danger">Stokta Yok</span>
+                            }
+                        </li>
+                        <li style="display: flex; justify-content: flex-start;">
+                            <b>Kargo: </b> <span>1 Günde teslimat <samp>Bugün için ücretsiz kargo!</samp></span>
+                        </li>
+                        <li style="display: flex; justify-content: flex-start;">
+                            <b>Sevdiklerinle paylaş: </b>
+                            <div class="share">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="#"><i class="fa fa-pinterest"></i></a>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+ <section class="related-product">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title related__product__title">
+                    <h2>Benzer Ürünler</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in ViewBag.SameProduct as List<ProductViewModel>)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="@item.ImageUrl">
+                            <ul class="product__item__pic__hover">
+                                <li>
+                                    <a asp-controller="Product" asp-action="Details" asp-route-productId="@item.Id">
+                                        <i class="fa-solid fa-circle-info"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <form asp-action="Add" asp-controller="Basket" method="post" style="display: inline;">
+                                        <input type="hidden" name="Id" value="@item.Id" />
+                                        <input type="hidden" name="Qnt" value="1" />
+                                <li>
+                                    <button style="border: none;background:none" type="submit">
+                                <li><a><i class="fa fa-shopping-cart"></i></a></li>
+                                </button>
+                                </li
+                                    </form>
+                                </li>
+                            </ul>
+
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="#">@item.Name</a></h6>
+                            <h5>@string.Format("{0:C2}", item.Price)</h5>
+                        </div>
+                    </div>
+                </div>
+
+            }
+           
+          
+        </div>
+    </div>
+ </section> 
+ 

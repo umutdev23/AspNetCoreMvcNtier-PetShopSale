@@ -1,0 +1,42 @@
+﻿@model LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+}
+
+<section >
+
+    <div class="container" style="position:fixed; top:50%; left:0; transform:translateY(-50%); box-shadow:0 4px 8px rgba(0, 0, 0, 0.2); border-radius: 10px; ">
+
+        <div class="col-md-6 ">
+            @* <div class="row inner-sec"> *@
+            <div class="login p-5 mw-75 " style="color:white">
+                <form asp-controller="Account" asp-action="Login" method="post">
+                    <input type="hidden" name="ReturnUrl" value="@Model.ReturnUrl" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-flouting mb-3">
+                        <label asp-for="UserName" class="form-label"></label>
+                        <input asp-for="UserName" class="form-control" />
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+                    <div class="form-flouting mb-3">
+                        <label asp-for="Password" class="form-label"></label>
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="checkbox mb-3">
+                        <label asp-for="RememberMe" class="form-label">
+                            <input asp-for="RememberMe" class="form-check-input" />
+                            Beni Hatırla
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Giriş Yap" class="w-100 btn btn-light" />
+                    </div>
+                </form>
+                <a asp-action="Register" asp-controller="Account" class="w-100 btn  btn-light">Yeni Üye Kayıt</a>
+            </div>
+        </div>
+    </div>
+
+</section>

@@ -1,0 +1,278 @@
+﻿@using PawfectPlaceShop.App.Entity.ViewModels
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutShop.cshtml";
+}
+
+@model List<ProductViewModel>
+<style>
+    /* General styles for the main menu */
+    .hero__categories__all {
+        background-color: #7fad39;
+        padding: 10px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+
+        .hero__categories__all i {
+            margin-right: 10px;
+        }
+
+        .hero__categories__all a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            font-size: 16px; /* Font size for main menu items */
+        }
+
+            .hero__categories__all a:hover {
+                color: #007bff;
+            }
+
+    /* Styles for the main list items */
+    .list-group-item {
+        border: none;
+        position: relative;
+        padding: 10px 15px;
+        cursor: pointer;
+        border-radius: 15px; /* Rounded corners for main menu items */
+    }
+
+        .list-group-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .list-group-item a {
+            text-decoration: none;
+            color: lightgray;
+            font-weight: bold;
+            background-color: #7fad12; /* Background color for links */
+            padding: 10px 30px; /* Padding for links */
+            display: block; /* Make links block-level */
+            transition: background-color 0.4s, color 0.4s; /* Smooth transition for background and text color */
+            border-radius: 15px; /* Rounded corners for links */
+            font-size: 14px; /* Font size for links */
+        }
+
+            .list-group-item a:hover {
+                background-color: #5e7f0c; /* Darker background color on hover */
+                color: white; /* Text color on hover */
+            }
+
+    /* Styles for sub-menu */
+    .sub-menu {
+        display: none; /* Hide sub-menu by default */
+        position: absolute;
+        top: 50%;
+        left: 40%;
+        opacity:0.85;
+        z-index: 1000;
+        background-color: #fff; /* Background color for sub-menu */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175); /* Shadow for sub-menu */
+        min-width: 140px; /* Minimum width of sub-menu */
+        border-radius: 15px; /* Rounded corners for sub-menu */
+    }
+
+    .list-group-item:hover .sub-menu {
+        display: block; /* Show sub-menu on parent hover */
+    }
+
+    .sub-menu a {
+        color: aliceblue text-decoration: none;
+        display: block;
+        padding: 8px 5px;
+        transition: background-color 0.4s, color 0.4s; /* Smooth transition for background and text color */
+        font-size: 14px; /* Font size for sub-menu items */
+    }
+
+        .sub-menu a:hover {
+            background-color: #5e7f0c; /* Background color on hover */
+            color: aliceblue; /* Text color on hover */
+        }
+
+    .hero__text {
+        margin-left: -70px;
+    }
+</style>
+
+<section class="product spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="hero__categories">
+                    <div class="hero__categories__all ">
+                        <i class="fa fa-bars"></i>
+                        <span><a asp-controller="Home" asp-action="Index" class="text-white">TÜM KATEGORİLER</a></span>
+                    </div>
+                    <ul class="list-group">
+                        @foreach (var animalType in ViewBag.AnimalType as List<AnimalTypeViewModel>)
+                        {
+                            <li class="list-group-item">
+
+                                <a asp-controller="Product" asp-action="Index" class="text-white fs-1 font" asp-route-animalTypeId="@animalType.Id" class="d-block">
+                @animalType.AnimalName <!-- Hayvan türü adı burada -->
+                                </a>
+                                <ul class="list-group sub-menu">
+                                    @foreach (var category in ViewBag.Categories as List<ProductCategoryViewModel>)
+                                    {
+                                        <li class="list-group-item">
+                                            <a asp-controller="Product" asp-action="Index" class="text-white" asp-route-productCategoryId="@category.Id" asp-route-animalTypeId="@animalType.Id" class="d-block">@category.Name</a>
+                                        </li>
+
+                                    }
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+
+                </div>
+             
+
+                <section class="latest-product spad">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-11 col-md-12">
+                                <div class="latest-product__text">
+                                    <h4>
+                                        &nbsp &nbsp &nbsp Son <br />
+                                        Eklenenler</h4>
+                                    <div class="latest-product__slider owl-carousel">
+                                        @for (int i = 0; i < ViewBag.LastProduct.Count; i += 3)
+                                        {
+                                            <div class="latest-product__slider__item">
+                                                @for (int j = i; j < i + 3 && j < ViewBag.LastProduct.Count; j++)
+                                                {
+                                                    @* asp - controller = "Product" asp - action = "Details" asp - route - id = "@product.Id" *@
+                                                    var product = ViewBag.LastProduct[j];
+                                                    <a  class="latest-product__item">
+                                                        <div class="latest-product__item__pic">
+                                                            <img src="@product.ImageUrl" alt="@product.Name" width="120px" height="120px">
+                                                        </div>
+                                                        <div class="latest-product__item__text">
+
+                                                            <h6>@product.Name</h6>
+                                                      @*       <button style="border: none;background:none" type="submit">
+                                                                <li><a asp-action="Index" asp-controller="Basket"><i class="fa fa-shopping-cart"></i></a></li>
+                                                            </button>
+                                                            <span>@string.Format("{0:C}", product.Price)</span> *@
+                                                        </div>
+                                                    </a>
+                                                }
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-lg-9 col-md-7">
+                <div class="product__discount">
+                    <div class="section-title product__discount__title">
+                        <h2>İndirimdekiler</h2>
+                    </div>
+                    <div class="row">
+                        <div class="product__discount__slider owl-carousel">
+                            @foreach (var product in ViewBag.SaleOff as List<ProductViewModel>)
+                            {
+                                <div class="col-lg-4">
+                                    <div class="product__discount__item">
+                                        <div class="product__discount__item__pic set-bg"
+                                             data-setbg="@product.ImageUrl" width="120px"  height="120px">
+                                            <div class="product__discount__percent">-20%</div>
+                                            <ul class="product__item__pic__hover ">
+                                                <form asp-controller="Basket" asp-action="Add" method="get">
+                                                    <input type="hidden" name="Id" value="@product.Id" />
+                                                    <input type="hidden" name="Qnt" value="1" />
+                                                <li>
+                                                    <a asp-action="Details" asp-controller="Product" asp-route-productId="@product.Id">
+                                                        <i class="fa-solid fa-circle-info"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <button style="border: none;background:none" type="submit">
+                                                <li><a><i class="fa fa-shopping-cart"></i></a></li>
+                                                </button>
+                                                </li>
+                                                </form>
+
+                                            </ul>
+
+                                        </div>
+                                        <div class="product__discount__item__text">
+                                            <span>KAÇMAZ FIRSAT</span>
+                                            <h5><a href="#">@product.Name</a></h5>
+                                            <div class="product__item__price">@product.Price <span class="bg-danger text-white">@(product.Price*130/100)</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                </div>
+                <div class="filter__item">
+                    <div class="row ">
+                        
+                        <div class="col-lg-8 col-md-8 ">
+                            <div class="filter__found 2 ">
+                                @if (Model.Count > 0)
+                                {
+                                    <h6><span>@Model.Count()</span>Ürün listelendi</h6>
+                                }
+                                else
+                                {
+                                    <h6 class="p-4 opacity-75  bg-success fs-1 font-weight-bolder text-white">Çok yakında bu kategoride ürünler eklenecek <svg width="15px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by  - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M226.5 92.9c14.3 42.9-.3 86.2-32.6 96.8s-70.1-15.6-84.4-58.5s.3-86.2 32.6-96.8s70.1 15.6 84.4 58.5zM100.4 198.6c18.9 32.4 14.3 70.1-10.2 84.1s-59.7-.9-78.5-33.3S-2.7 179.3 21.8 165.3s59.7 .9 78.5 33.3zM69.2 401.2C121.6 259.9 214.7 224 256 224s134.4 35.9 186.8 177.2c3.6 9.7 5.2 20.1 5.2 30.5v1.6c0 25.8-20.9 46.7-46.7 46.7c-11.5 0-22.9-1.4-34-4.2l-88-22c-15.3-3.8-31.3-3.8-46.6 0l-88 22c-11.1 2.8-22.5 4.2-34 4.2C84.9 480 64 459.1 64 433.3v-1.6c0-10.4 1.6-20.8 5.2-30.5zM421.8 282.7c-24.5-14-29.1-51.7-10.2-84.1s54-47.3 78.5-33.3s29.1 51.7 10.2 84.1s-54 47.3-78.5 33.3zM310.1 189.7c-32.3-10.6-46.9-53.9-32.6-96.8s52.1-69.1 84.4-58.5s46.9 53.9 32.6 96.8s-52.1 69.1-84.4 58.5z" /></svg></h6>
+                                }
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+                <div class="row">
+                    @foreach(var item in Model)
+                    {
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg" data-setbg="@item.ImageUrl" width="120px" height="120px">
+                                    <ul class="product__item__pic__hover ">
+                                        <form asp-controller="Basket" asp-action="Add" method="get">
+                                            <input type="hidden" name="Id" value="@item.Id" />
+                                            <input type="hidden" name="Qnt" value="1" />
+                                        <li>
+                                            <a asp-action="Details" asp-controller="Product" asp-route-productId="@item.Id">
+                                                <i class="fa-solid fa-circle-info"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <button style="border: none;background:none" type="submit">
+                                        <li><a><i class="fa fa-shopping-cart"></i></a></li>
+                                        </button>
+                                        </li>
+                                        </form>
+
+                                    </ul>
+                                    
+                                </div>
+                                <div class="product__item__text">
+                                    <h6><a href="#">@item.Name</a></h6>
+                                    <h5>@string.Format("{0:C02}",item.Price)</h5>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
+                 
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</section>

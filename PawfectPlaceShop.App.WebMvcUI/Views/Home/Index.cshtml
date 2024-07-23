@@ -1,0 +1,400 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+<!-- Css Styles -->
+<link rel="stylesheet" href="~/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="~/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="~/css/elegant-icons.css" type="text/css">
+<link rel="stylesheet" href="~/css/nice-select.css" type="text/css">
+<link rel="stylesheet" href="~/css/jquery-ui.min.css" type="text/css">
+<link rel="stylesheet" href="~/css/owl.carousel.min.css" type="text/css">
+<link rel="stylesheet" href="~/css/slicknav.min.css" type="text/css">
+<link rel="stylesheet" href="~/css/style.css" type="text/css">
+
+@model List<ProductViewModel>
+<style>
+    /* General styles for the main menu */
+    .hero__categories__all {
+        background-color: #7fad39;
+        padding: 10px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+
+        .hero__categories__all i {
+            margin-right: 10px;
+        }
+
+        .hero__categories__all a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            font-size: 16px; /* Font size for main menu items */
+        }
+
+            .hero__categories__all a:hover {
+                color: #007bff;
+            }
+
+    /* Styles for the main list items */
+    .list-group-item {
+        border: none;
+        position: relative;
+        padding: 10px 15px;
+        cursor: pointer;
+        border-radius: 15px; /* Rounded corners for main menu items */
+    }
+
+        .list-group-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .list-group-item a {
+            text-decoration: none;
+            color: lightgray;
+            font-weight: bold;
+            background-color: #7fad12; /* Background color for links */
+            padding: 10px 30px; /* Padding for links */
+            display: block; /* Make links block-level */
+            transition: background-color 0.4s, color 0.4s; /* Smooth transition for background and text color */
+            border-radius: 15px; /* Rounded corners for links */
+            font-size: 14px; /* Font size for links */
+        }
+
+            .list-group-item a:hover {
+                background-color: #5e7f0c; /* Darker background color on hover */
+                color: white; /* Text color on hover */
+            }
+
+    /* Styles for sub-menu */
+    .sub-menu {
+        display: none; /* Hide sub-menu by default */
+        position: absolute;
+        top: 60%;
+        left: 60%;
+        z-index: 1000;
+        background-color: #fff; /* Background color for sub-menu */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175); /* Shadow for sub-menu */
+        padding: 10px;
+        min-width: 200px; /* Minimum width of sub-menu */
+        border-radius: 15px; /* Rounded corners for sub-menu */
+    }
+
+    .list-group-item:hover .sub-menu {
+        display: block; /* Show sub-menu on parent hover */
+    }
+
+    .sub-menu a {
+        color: aliceblue
+        text-decoration: none;
+        display: block;
+        padding: 8px 10px;
+        transition: background-color 0.4s, color 0.4s; /* Smooth transition for background and text color */
+        font-size: 14px; /* Font size for sub-menu items */
+    }
+
+        .sub-menu a:hover {
+            background-color: #5e7f0c; /* Background color on hover */
+            color: aliceblue; /* Text color on hover */
+        }
+
+    .hero__text{
+        margin-left:-70px;
+    }
+</style>
+
+
+
+
+
+<section class="hero" style="margin-top : 25px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="hero__categories">
+                    <div class="hero__categories__all ">
+                        <i class="fa fa-bars"></i>
+                        <span><a asp-controller="Home" asp-action="Index" class="text-white" >TÜM KATEGORİLER</a></span>
+                    </div>
+                    <ul class="list-group">
+                        @foreach (var animalType in ViewBag.AnimalType as List<AnimalTypeViewModel>)
+                        {
+                            <li class="list-group-item">
+                                <a asp-controller="Product" asp-action="Index" class="text-white fs-1 font" asp-route-animalTypeId="@animalType.Id" class="d-block">
+                                    @animalType.AnimalName <!-- Hayvan türü adı burada -->
+                                </a>
+                                <ul class="list-group sub-menu">
+                                    @foreach (var category in ViewBag.Categories as List<ProductCategoryViewModel>)
+                                    {
+                                        <li class="list-group-item">
+                                            <a asp-controller="Product" asp-action="Index" class="text-white" asp-route-categoryId="@category.Id" asp-route-animalTypeId="@animalType.Id" class="d-block">@category.Name</a>
+                                        </li>
+                                       
+                                    }
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="hero__search">
+                    <div class="hero__search__form">
+
+                        <form asp-controller="Home" asp-action="Index" method="get">
+
+                            
+                            <input type="text" name="search"  placeholder="Neye ihtiyacın var?">
+                            <button type="submit" class="site-btn">ARA</button>
+                        </form>
+                    </div>
+                    <div class="hero__search__phone">
+                        <div class="hero__search__phone__icon">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div class="hero__search__phone__text">
+                            <h5>+90 525 252 2235</h5>
+                            <span>7/24 Destek</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero__item set-bg " data-setbg="https://scontent.fist1-1.fna.fbcdn.net/v/t1.6435-9/94381827_104046571292577_8645102420419936256_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=iQDL4gWoyeEQ7kNvgGax0Lm&_nc_ht=scontent.fist1-1.fna&oh=00_AYBPn10XqS_DxdFtOLjMiUZpmwiuGTXwduRapWpHorGo8w&oe=66BB1C70" width="600px" height="8 00px">
+                    <div class="hero__text ">
+                        <span>YÜKSEK KALİTE</span>
+                        <h2>Güvenli Alışveriş <br />100% Orijinal</h2>
+                        <p>Evcil dostlarınız için en doğru adres</p>
+                        <a asp-controller="Product" asp-action="Index" class="primary-btn">Şimdi Alışveriş Yap</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</section>
+
+<!-- Categories Section Begin -->
+<section class="categories">
+    <div class="container">
+        <div class="row">
+            <h3 class="font-weight-bold text-black text-center w-100 mb-3">ÖNE ÇIKANLAR</h3>
+
+            <div class="categories__slider owl-carousel">
+                @foreach(var item in Model)
+                {
+                    <div class="col text-center">
+                        <div class="categories__item bg-light d-flex justify-content-center align-items-center" style="background-image: url('@item.ImageUrl'); height: 200px; background-size: cover; background-position: center; ">
+                        </div>
+                        <a asp-controller="Product" asp-action="Details" asp-route-productId="@item.Id" class="product-link d-block mt-2 text-decoration-none text-dark font-weight-bold text-uppercase">
+                            @item.Name
+                        </a>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Categories Section End -->
+<!-- Featured Section Begin -->
+<section class="featured spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>Popüler Ürünler</h2>
+                </div>
+                <div class="featured__controls">
+                   
+                 
+                </div>
+            </div>
+        </div>
+        <div class="row featured__filter">
+            @foreach (var item in ViewBag.Populer as List<ProductViewModel>)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
+                    <div class="featured__item">
+                        <form asp-controller="Basket" asp-action="Add" method="get">
+                            <input type="hidden" name="Id" value="@item.Id" /> @* burası eklendi *@
+                            <input type="hidden" name="Qnt" value="1" />
+                            <div class="featured__item__pic set-bg" data-setbg="@item.ImageUrl">
+                                <ul class="featured__item__pic__hover">
+
+                                    <li><a asp-controller="Product" asp-action="Details" asp-route-productId="@item.Id"><i class="fa-solid fa-circle-info"></i></a></li>
+
+
+                                    <li> 
+                                    <button style="border: none;background:none" type="submit">
+                                    <li><a><i class="fa fa-shopping-cart"></i></a></li>
+                                    </button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="featured__item__text">
+                                <h6><a href="#">@item.Name</a></h6>
+                                <h5>@string.Format("{0:C02}", item.Price)</h5>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+</section>
+<!-- Featured Section End -->
+<!-- Banner Begin -->
+<div class="banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                <div class="banner__pic">
+                    <img src="./img/afiş.jpg" alt="petshopafiş">
+                </div>
+               
+            </div>
+          
+        
+        </div>
+    </div>
+</div>
+<!-- Banner End -->
+<!-- Latest Product Section Begin -->
+<section class="latest-product spad" style="margin-bottom: 25px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="latest-product__text">
+                    <h4>Son Eklenenler</h4>
+                    <div class="latest-product__slider owl-carousel">
+                        @for (int i = 0; i < ViewBag.LastProduct.Count; i += 3)
+                        {
+                            <div class="latest-product__slider__item">
+                                @for (int j = i; j < i + 3 && j < ViewBag.LastProduct.Count; j++)
+                                {
+                                    var product = ViewBag.LastProduct[j];
+
+                                    <a asp-controller="Product" asp-action="Details" asp-route-productId="@product.Id" class="latest-product__item">
+
+                                        <div class="latest-product__item__pic">
+                                            <img  src="@product.ImageUrl" alt="@product.Name">
+                                        </div>
+                                        <div class="latest-product__item__text">
+
+                                            <h6>@product.Name</h6>
+
+                                            <span>@string.Format("{0:C}", product.Price)</span>
+                                        </div>
+                                    </a>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="latest-product__text">
+                    <h4>Çok Satanlar</h4>
+                    <div class="latest-product__slider owl-carousel">
+                        @for (int i = 0; i < ViewBag.Populer.Count; i += 3)
+                        {
+                            <div class="latest-product__slider__item">
+                                @for (int j = i; j < i + 3 && j < ViewBag.Populer.Count; j++)
+                                {
+                                    var product = ViewBag.Populer[j];
+
+                                    <a asp-controller="Product" asp-action="Details" asp-route-productId="@product.Id" class="latest-product__item">
+
+                                        <div class="latest-product__item__pic">
+                                            <img src="@product.ImageUrl" alt="@product.Name">
+                                        </div>
+                                        <div class="latest-product__item__text">
+
+                                            <h6>@product.Name</h6>
+
+                                            <span>@string.Format("{0:C}", product.Price)</span>
+                                        </div>
+                                    </a>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            @* <div class="col-lg-4 col-md-6">
+                <div class="latest-product__text">
+                    <h4>İndirimdekiler</h4>
+                    <div class="latest-product__slider owl-carousel">
+                        @for (int i = 0; i < ViewBag.SaleOff.Count; i += 3)
+                        {
+                            <div class="latest-product__slider__item">
+                                @for (int j = i; j < i + 3 && j < ViewBag.SaleOff.Count; j++)
+                                {
+                                    var product = ViewBag.SaleOff[j];
+                                    <a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id" class="latest-product__item">
+                                        <div class="latest-product__item__pic">
+                                            <img src="@product.ImageUrl" alt="@product.Name">
+                                        </div>
+                                        <div class="latest-product__item__text">
+
+                                            <h6><a asp-controller="Product" asp-action="Details" asp-route-productId="@product.Id">@product.Name</a></h6>
+
+                                            <span>@string.Format("{0:C}", product.Price)</span>
+                                        </div>
+                                    </a>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div> *@
+            </div>
+
+
+        </div>
+    </div>
+</section>
+<!-- Latest Product Section End -->
+<!-- Blog Section Begin -->
+@* <section class="from-blog spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title from-blog__title">
+                    <h2>Evcil İlanlara Göz At</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in ViewBag.GetLastArticle as List<ArticleViewModel>)
+            {
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="blog__item">
+                        <div class="blog__item__pic">
+                            <img src="@item.PictureUrl" alt="">
+                        </div>
+                        <div class="blog__item__text text-center">
+                            <ul>
+                                <li><i class="fa fa-calendar-o"></i> @item.CreatedDate</li>
+                            </ul>
+                            <h5><a asp-controller="Blog" asp-action="Details" asp-route-DetailsId="@item.Id">@item.Title</a></h5>
+                            <p>@item.Location</p>
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+    </div>
+
+</section> *@
+<!-- Blog Section End -->
+
